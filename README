@@ -1,0 +1,42 @@
+zenregex
+========
+
+zenregex is a clone of the Zendo game[1].
+
+
+BASIC CONCEPT
+=============
+
+At the beginning of each game, you will be given two koans. One will match
+the rule that you are about to discover, the other will not. Now you can 
+either create variations of these koans or think of completely different
+ones. The system will tell you for each koan wether it is true or false.
+
+For example, the beginning of a session can look like this:
+
+  True koan:     abd
+  False koan:    bda
+  >>> abc
+  True
+  >>> bbc
+  False
+
+You can query the system to evaluate a koan for an unlimited number of times.
+Once you have an idea of how the rule might look like, you can simply enter
+a regular expression:
+
+  >>> /a/
+  Nah, /a/ can not be the solution, because
+    * it does match false koan 'bda'
+
+The game ends when you reached enlightenment (i.e., you found the rule).
+It also ends when you close it.
+
+
+IRC EDITION
+===========
+
+Playing is only fun when you.....
+
+
+[1] http://en.wikipedia.org/wiki/Zendo_(game)
