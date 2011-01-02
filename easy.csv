@@ -1,0 +1,10 @@
+/^a/;abd;bda
+/^aa/;aab;bba
+/b$/;adb;bda
+/aa/;aab;abb
+/c$/;abc;cba
+/c/;aac;aab
+/^ba/;bac;cba
+/abc/;abc;cba
+/cc$/;ccc;cca
+/a.b/;aab;aac

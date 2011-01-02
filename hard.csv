@@ -1,0 +1,5 @@
+/.c./;acb;abc
+/ab/;abc;acb
+/^[ab]/;abb;cab
+/[ac]$/;abc;bbb
+/[cb]/;abc;aaa
