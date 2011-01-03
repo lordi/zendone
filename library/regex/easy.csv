@@ -1,6 +1,6 @@
-/^a/;abd;bda
+/^a/;abc;bca
 /^aa/;aab;bba
-/b$/;adb;bda
+/b$/;acb;bca
 /aa/;aab;abb
 /c$/;abc;cba
 /c/;aac;aab

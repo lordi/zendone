@@ -3,7 +3,29 @@ import os
 import sys
 from random import shuffle
 
-class InvalidRuleException(Exception): pass
+class Zendone:
+    def __init__(self, game):
+        self.gamecfg = __import__('zendone.games.%s' % game, 
+                fromlist=['Rule','Koan'])
+        self.gamename = game
+
+    def load_library(self, filename):
+        def line_to_triple(line):
+            triple = line.strip().split(';')
+            r = self.gamecfg.Rule(triple[0])
+            t = self.gamecfg.Koan(triple[1])
+            f = self.gamecfg.Koan(triple[2])
+            assert r(t), "True koan %s doesn't match rule %s" % (t, r)
+            assert not r(f), "False koan %s does match rule %s" % (f, r)
+            return (r,t,f)
+        self._library = map(line_to_triple, file(filename))
+
+    def get_random_rule(self):
+        from copy import copy
+        library = copy(self._library)
+        shuffle(library)
+        return library[0]
+
 
 class Rule:
     __valid_rule = re.compile('(\W)(.{0,60})\\1', re.IGNORECASE)
@@ -24,7 +46,6 @@ class Rule:
     def __str__(self):
         return self.regex.pattern
 
-class InvalidKoanException(Exception): pass
 
 class Koan(str):
     __valid_koan = re.compile('^[abc]{3}$', re.IGNORECASE)
@@ -33,26 +54,13 @@ class Koan(str):
         if not self.__valid_koan.match(koanstr):
             raise InvalidKoanException(koanstr)
 
-class Library:
-    def __init__(self, filename):
-        def line_to_triple(line):
-            r, t, f = line.strip().split(';')
-            rule = Rule(r)
-            assert rule(t), "True koan %s doesn't match rule %s" % (t,rule)
-            assert not rule(f), "False koan %s does match rule %s" % (f,rule)
-            return (rule,t,f)
-        self._rules = map(line_to_triple, file(filename))
 
-    def get_random_rule(self):
-        from copy import copy
-        rules = copy(self._rules)
-        shuffle(rules)
-        return rules[0]
 
 def get_contradictions(rule, cache):
     return filter(lambda c: c[1] ^ rule(c[0]), cache)
 
-def console_session(rule, true_koan, false_koan):
+
+def console_session(zendonecfg, rule, true_koan, false_koan):
     print "Zenregex -- A regex Zendo clone."
     print
     print "True koan:    ", true_koan
