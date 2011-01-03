@@ -1,14 +1,15 @@
 ZENDONE
 =======
 
-Zendone is a clone of the Zendo game[1]. Zendo is a universal game where the
-goal is to guess a rule. The players can test their hypothesis of what the
-rule looks like by asking the game master to evalute arbitary koans. The game
-master states wether the given koan matches the rule or not.
+Zendone is a clone of the Zendo[1], which is an universal game in which the
+goal is to discover a rule (ie, "reach enlightment"). A configuration of
+atoms ("koan") can either match the unknown rule or not. The players can test
+their hypothesis of what the rule might look like by evaluating arbitary
+koans.
 
 The following game types are currently implemented in Zendone:
 
-  * regex: The koans are strings that match [abc]{3} and rules are
+  * regex: The koans are 3-letter strings that match [abc]{3} and rules are
            regular expressions.
 
 
