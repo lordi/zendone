@@ -1,17 +1,24 @@
-ZENREGEX
-========
+ZENDONE
+=======
 
-Zenregex is a clone of the Zendo game[1] with strings as koans and regular
-expressions as rules.
+Zendone is a clone of the Zendo game[1]. Zendo is a universal game where the
+goal is to guess a rule. The players can test their hypothesis of what the
+rule looks like by asking the game master to evalute arbitary koans. The game
+master states wether the given koan matches the rule or not.
+
+The following game types are currently implemented in Zendone:
+
+  * regex: The koans are strings that match [abc]{3} and rules are
+           regular expressions.
 
 
 BASIC CONCEPT
 =============
 
-At the beginning of each game, you will be given two koans. One will match the
-rule that you are about to discover, the other will not. Now you can either 
-create variations of these koans or think of completely different ones. The
-system will tell you for each koan wether it is true or false.
+At the beginning of each game, you will be given two koans. One will match
+the rule that you are about to discover, the other will not. Now you can
+either create variations of these koans or think of completely different 
+ones. The system will tell you for each koan wether it is true or false.
 
 For example, the beginning of a session can look like this:
 
